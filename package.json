@@ -1,6 +1,11 @@
 {
   "name": "reac-ts-redux",
   "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Mr_ozin",
+    "url": "https://github.com/ryokryok"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
