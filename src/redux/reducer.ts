@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { ApiAction, CounterAction, ApiResponse } from "./action"
+import { ApiAction, CounterAction } from "./action"
 
 export type CounterState = {
   value: number
@@ -25,17 +25,21 @@ function counterReducer(
   }
 }
 
-const initialApiState: ApiResponse = {
+export type ApiState = {
+  ip: string | null
+}
+
+const initialApiState: ApiState = {
   ip: null,
 }
 
 export function apiReducer(
   prevState = initialApiState,
   action: ApiAction
-): ApiResponse {
+): ApiState {
   switch (action.type) {
     case "ipify/start":
-      return { ip: null }
+      return initialApiState
     case "ipify/success":
       return action.response
     case "ipify/failed":
