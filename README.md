@@ -30,3 +30,9 @@ if you want to know it, check [Vite document](https://vitejs.dev/guide/env-and-m
 ### `yarn serve`
 
 locally preview production build app.
+
+## implement log
+
+check `dev` branch history.
+
+[dev branch commit history.](https://github.com/ryokryok/react-redux-hooks-with-thunk/commits/dev)
