@@ -31,7 +31,7 @@ function counterReducer(
 }
 
 type ApiResponse = {
-  ip: string
+  ip: string | null
 }
 
 type ApiActionStart = {
@@ -50,13 +50,13 @@ type ApiActionFailed = {
 export type ApiAction = ApiActionStart | ApiActionSuccess | ApiActionFailed
 
 export const initialApiState: ApiResponse = {
-  ip: "",
+  ip: null,
 }
 
 export function apiReducer(prevState = initialApiState, action: ApiAction) {
   switch (action.type) {
     case "ipify/start":
-      return prevState
+      return { ip: null }
     case "ipify/success":
       return action.response
     case "ipify/failed":

@@ -23,7 +23,7 @@ function useFetchApi() {
     fetchAction()
   }, [])
 
-  return ip
+  return { ip, fetchAction }
 }
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
   const handleIncrement = () => countDispatch({ type: "counter/increment" })
   const handleDecrement = () => countDispatch({ type: "counter/decrement" })
   const handleReset = () => countDispatch({ type: "counter/reset" })
-  const ip = useFetchApi()
+  const { ip, fetchAction } = useFetchApi()
 
   return (
     <div className="App">
@@ -44,7 +44,11 @@ function App() {
         <MemoizedButton buttonAction={handleReset} displayText={"reset"} />
       </div>
       <div>
-        <h2>IP Address: {ip}</h2>
+        <h2>IP Address: {ip ? ip : "loading..."}</h2>
+        <MemoizedButton
+          buttonAction={fetchAction}
+          displayText={"check ip address"}
+        />
       </div>
     </div>
   )
@@ -55,10 +59,10 @@ type ButtonProps = {
   displayText: string
 }
 
-function CounterButton({ buttonAction, displayText }: ButtonProps) {
+function ActionButton({ buttonAction, displayText }: ButtonProps) {
   return <button onClick={buttonAction}>{displayText}</button>
 }
 
-const MemoizedButton = React.memo(CounterButton)
+const MemoizedButton = React.memo(ActionButton)
 
 export default App
