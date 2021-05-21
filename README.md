@@ -3,6 +3,12 @@
 React-redux hooks sample with Redux-Thunk
 (not-async and async state manage with Redux)
 
+## demo site
+
+here.
+
+[https://react-redux-hooks-with-thunk.pages.dev/](https://react-redux-hooks-with-thunk.pages.dev/)
+
 ## scripts
 
 powered by [Vite](https://vitejs.dev/)
