@@ -2,7 +2,13 @@ import React, { Dispatch, useEffect } from "react"
 import "./App.css"
 
 import { useSelector, useDispatch, TypedUseSelectorHook } from "react-redux"
-import { CounterAction, ApiAction, AppState, apiClient } from "./redux"
+import { ApiResponse, ApiAction, CounterAction } from "./redux/action"
+import { AppState } from "./redux/reducer"
+
+export async function apiClient(): Promise<ApiResponse> {
+  const response = await fetch("https://api.ipify.org/?format=json")
+  return response.json()
+}
 
 const useTypedSelector: TypedUseSelectorHook<AppState> = useSelector
 
