@@ -1,4 +1,5 @@
 import { combineReducers, createStore, applyMiddleware } from "redux"
+import logger from "redux-logger"
 import thunk from "redux-thunk"
 
 export type CounterAction = {
@@ -77,4 +78,6 @@ export async function apiClient(): Promise<ApiResponse> {
 
 export type AppState = ReturnType<typeof rootReducer>
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+const middleware = import.meta.env.DEV ? [thunk, logger] : [thunk]
+
+export const store = createStore(rootReducer, applyMiddleware(...middleware))
